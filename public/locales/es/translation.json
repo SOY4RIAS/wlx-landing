@@ -1,0 +1,16 @@
+{
+    "home": "Inicio",
+    "benefits": "Beneficios",
+    "welcome" : {
+        "part1": "Bienvenido a tu",
+        "part2": "Entrevista Técnica",
+        "part3": "en Wolox"
+    },
+    "weWorkOn": "Trabajamos para convertir ideas en productos",
+    "benefitsTitle": "Entre los beneficios que ofrecemos se encuentran",
+    "greetings": {
+        "part1": "Gracias por completar el ejercicio",
+        "part2": "te invitamos a ver mas información"
+    },
+    "moreContent": "Conocer más"
+}
