@@ -1,5 +1,14 @@
-import React from 'react';
+import { useEffect } from 'react';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
 
 export const Loading = () => {
-	return <h1> Cargando </h1>;
+	useEffect(() => {
+		NProgress.start();
+		return () => {
+			NProgress.done();
+		};
+	}, []);
+
+	return null;
 };

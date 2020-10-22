@@ -1,11 +1,14 @@
 import React from 'react';
+import { Router } from './routers';
 
-import { useTranslation } from 'react-i18next';
+import { withSuspense } from './utils/hoc/withSuspense';
 
 function App() {
-	const { t } = useTranslation();
-
-	return <p>{t('home')} </p>;
+	return (
+		<>
+			<Router />
+		</>
+	);
 }
 
-export default App;
+export default withSuspense(App);
