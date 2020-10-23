@@ -1,0 +1,46 @@
+@import './../../styles/shared.scss';
+
+#home {
+	padding-top: $main-padding-top;
+
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+
+	@media all and (min-width: 300px) and (max-width: 767px) {
+		background-position: unset;
+		background-image: $bg-header;
+	}
+
+	@media all and (min-width: 768px) {
+		background-image: $bg-header-2x;
+	}
+
+	@media all and (min-width: 1200px) {
+		background-attachment: local;
+		background-image: $bg-header-3x;
+	}
+}
+
+.ic-hero-header {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+
+	background-image: $ic-hero;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+
+	// @media all and (min-width: 300px) and (max-width: 767px) {
+	// 	background-position: unset;
+	// }
+
+	@media all and (min-width: 768px) {
+		background-image: $ic-hero-2;
+	}
+
+	@media all and (min-width: 1200px) {
+		background-image: $ic-hero-3;
+	}
+}

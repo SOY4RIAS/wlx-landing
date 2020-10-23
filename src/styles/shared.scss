@@ -1,0 +1,12 @@
+@import './colors';
+@import './sizes';
+@import './urls';
+@import './shadows';
+
+@function set-button-text-color($color) {
+	@if (lightness($color) > 40) {
+		@return $text-color;
+	} @else {
+		@return white;
+	}
+}

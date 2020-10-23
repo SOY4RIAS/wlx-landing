@@ -23,7 +23,7 @@
 	"plugins": ["react", "@typescript-eslint"],
 	"rules": {
 		"@typescript-eslint/no-unused-vars": "error",
-		"react/prop-types": [2, { "ignore": ["children"] }],
+		"react/prop-types": "off",
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"linebreak-style": ["error", "unix"],
 		"quotes": ["error", "single"],

@@ -1,0 +1,73 @@
+@import './../../styles/shared.scss';
+
+header {
+	position: absolute;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 45px 140px 0;
+	animation: 3s fadein 0.5s forwards;
+
+	animation-duration: 1s;
+	animation-name: fadein;
+	animation-fill-mode: forwards;
+	opacity: 0;
+	color: white;
+	overflow-x: hidden;
+
+	.logo {
+		background: $logo-full-color;
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: center;
+		width: 7rem;
+		height: 2rem;
+	}
+
+	nav {
+		font-size: $font-size-pivot;
+		font-weight: bold;
+		display: flex;
+		margin-right: -15px;
+		align-items: center;
+
+		a {
+			color: $text-color;
+
+			text-decoration: none;
+			&:visited {
+				color: $text-color;
+			}
+		}
+
+		li {
+			margin: 0 15px;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		padding: 20px 50px;
+		flex-direction: column;
+
+		nav {
+			margin: 0;
+		}
+	}
+
+	@media screen and (max-width: 300px) {
+		padding: 20px 20px;
+		flex-direction: column;
+
+		nav {
+			padding: 10px;
+			margin-right: 0;
+		}
+	}
+}
+
+@keyframes fadein {
+	100% {
+		opacity: 1;
+	}
+}
