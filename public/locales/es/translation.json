@@ -8,11 +8,25 @@
         "at": "en",
         "company": "Wolox"
     },
-    "weWorkOn": "Trabajamos para convertir ideas en productos",
+    "social": {
+        "account": "@Wolox",
+        "followUs": "Siguenos"
+    },
+    "collaborators": {
+        "qty": "350",
+        "name": "Woloxers"
+    },
+    "heroMessage": {
+        "workOn": "Trabajamos para",
+        "convert": "convertir",
+        "ideas": "ideas",
+        "products": "productos."
+    },
     "benefitsTitle": "Entre los beneficios que ofrecemos se encuentran",
     "greetings": {
         "part1": "Gracias por completar el ejercicio",
         "part2": "te invitamos a ver mas información"
     },
+    "in": "en",
     "moreContent": "Conocer más"
 }

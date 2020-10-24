@@ -24,8 +24,20 @@ nav {
 	list-style: none;
 }
 
+.text-center {
+	text-align: center;
+}
+
+.primary-color {
+	color: $primary-color;
+}
+
 .accent-color {
 	color: $accent-color;
+}
+
+.white-color {
+	color: #ffffff;
 }
 
 .thin {
@@ -34,4 +46,8 @@ nav {
 
 .bold {
 	font-weight: bold;
+}
+
+.bg-white-lilac {
+	background-color: $bg-white-lilac;
 }

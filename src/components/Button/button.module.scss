@@ -4,6 +4,7 @@ $primary-color-darken: darken($primary-color, 10%);
 $text-color-calculated: set-button-text-color($primary-color-darken);
 
 .btn {
+	cursor: pointer;
 	font-family: 'Montserrat';
 	font-size: $font-size-pivot;
 	font-weight: bold;
@@ -28,6 +29,11 @@ $text-color-calculated: set-button-text-color($primary-color-darken);
 	&:hover {
 		color: $text-color-calculated;
 		background-color: $primary-color-darken;
+	}
+
+	&:focus {
+		outline: none;
+		filter: brightness(1.2);
 	}
 
 	&.solid {
