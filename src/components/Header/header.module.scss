@@ -1,6 +1,6 @@
 @import './../../styles/shared.scss';
 
-header {
+.header {
 	position: absolute;
 	width: 100%;
 	display: flex;
@@ -16,6 +16,8 @@ header {
 	color: white;
 	overflow-x: hidden;
 
+	transition: all 0.5s ease-in-out;
+
 	.logo {
 		background: $logo-full-color;
 		background-repeat: no-repeat;
@@ -23,6 +25,16 @@ header {
 		background-position: center;
 		width: 7rem;
 		height: 2rem;
+	}
+
+	&.scrolled {
+		padding-top: 0.5rem;
+		padding-bottom: 0.2rem;
+		z-index: 1;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: white;
 	}
 
 	nav {

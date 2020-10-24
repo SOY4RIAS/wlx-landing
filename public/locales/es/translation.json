@@ -1,6 +1,6 @@
 {
     "home": "Inicio",
-    "benefits": "Beneficios",
+    "benefitsLbl": "Beneficios",
     "login": "Login",
     "welcome" : {
         "part1": "Bienvenido a tu",
@@ -22,7 +22,17 @@
         "ideas": "ideas",
         "products": "productos."
     },
-    "benefitsTitle": "Entre los beneficios que ofrecemos se encuentran",
+
+    "benefits": {
+        "title":"Entre los beneficios que ofrecemos se encuentran",
+        "hourRate": "Flexibilidad Horaria",
+        "homeOffice": "Home Office",
+        "workshops": "Capacitaciones y Workshops",
+        "snacks": "Snacks, frutas y bebidas gratis",
+        "remoteWeek": "Semana Remota",
+        "latestTechnologies": "Trabajar en ultimas tecnologías"
+    },
+   
     "greetings": {
         "part1": "Gracias por completar el ejercicio",
         "part2": "te invitamos a ver mas información"
