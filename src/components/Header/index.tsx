@@ -38,19 +38,21 @@ export const Header: React.FC = () => {
 		<header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
 			<div className={styles.logo}></div>
 			<nav>
-				<li>
-					<HashLink smooth to={`${Routes.root}#home`}>
-						{t('home')}
-					</HashLink>
-				</li>
-				<li>
-					<HashLink smooth to={`${Routes.root}#benefits`}>
-						{t('benefitsLbl')}
-					</HashLink>
-				</li>
-				<li>
-					<Button onClick={() => history.push(Routes.signUp)}>{t('login')}</Button>
-				</li>
+				<ul>
+					<li>
+						<HashLink smooth to={`${Routes.root}#home`}>
+							{t('home')}
+						</HashLink>
+					</li>
+					<li>
+						<HashLink smooth to={`${Routes.root}#benefits`}>
+							{t('benefitsLbl')}
+						</HashLink>
+					</li>
+					<li>
+						<Button onClick={() => history.push(Routes.signUp)}>{t('login')}</Button>
+					</li>
+				</ul>
 			</nav>
 		</header>
 	);

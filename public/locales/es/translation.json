@@ -35,9 +35,10 @@
     "farewell": {
         "thanks": "Gracias por",
         "complete": "completar el ejercicio",
-        "invite": "te invitamos a ver mas información",
+        "invite": "Te invitamos a ver mas información",
         "moreContent": "Conocer más"
     },
     "in": "en",
-    "companyLogoTxt": "Logo de Wolox"
+    "companyLogoTxt": "Logo de Wolox",
+    "siteInProgress": "Esta pagina está en contrucción"
 }
