@@ -1,9 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import styles from './button.module.scss';
 
-type ButtonType = 'outline' | 'solid';
+type ButtonType = 'outline' | 'solid' | 'borderless';
 
 interface ButtonProps {
 	type?: ButtonType;
@@ -16,9 +15,4 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick, type = 'outli
 			{children}
 		</button>
 	);
-};
-
-Button.propTypes = {
-	type: PropTypes.oneOf<ButtonType>(['outline', 'solid']),
-	onClick: PropTypes.func.isRequired,
 };

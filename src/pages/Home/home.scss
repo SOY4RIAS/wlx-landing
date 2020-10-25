@@ -8,6 +8,10 @@
 	background-size: cover;
 	background-position: top center;
 
+	button {
+		margin-top: 10px;
+	}
+
 	@media all and (min-width: 300px) and (max-width: 767px) {
 		background-position: unset;
 		background-image: $bg-header;

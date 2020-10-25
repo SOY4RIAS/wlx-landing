@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router';
+import { HashLink } from 'react-router-hash-link';
+import { Routes } from '../../routers/Router/routes';
+
 import { Button } from '../Button';
+
 import styles from './header.module.scss';
 
 export const Header: React.FC = () => {
 	const { t } = useTranslation();
+
+	const history = useHistory();
 
 	const [isScrolled, setScrolled] = useState(false);
 
@@ -32,13 +39,17 @@ export const Header: React.FC = () => {
 			<div className={styles.logo}></div>
 			<nav>
 				<li>
-					<a href="#home">{t('home')}</a>
+					<HashLink smooth to={`${Routes.root}#home`}>
+						{t('home')}
+					</HashLink>
 				</li>
 				<li>
-					<a href="#benefits">{t('benefitsLbl')}</a>
+					<HashLink smooth to={`${Routes.root}#benefits`}>
+						{t('benefitsLbl')}
+					</HashLink>
 				</li>
 				<li>
-					<Button onClick={() => null}>{t('login')}</Button>
+					<Button onClick={() => history.push(Routes.signUp)}>{t('login')}</Button>
 				</li>
 			</nav>
 		</header>
