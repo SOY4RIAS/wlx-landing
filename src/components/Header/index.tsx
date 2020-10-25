@@ -4,6 +4,8 @@ import { Button } from '../Button';
 import styles from './header.module.scss';
 
 export const Header: React.FC = () => {
+	const { t } = useTranslation();
+
 	const [isScrolled, setScrolled] = useState(false);
 
 	const handleScroll = () => {
@@ -25,7 +27,6 @@ export const Header: React.FC = () => {
 		};
 	});
 
-	const { t } = useTranslation();
 	return (
 		<header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
 			<div className={styles.logo}></div>

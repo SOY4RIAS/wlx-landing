@@ -8,6 +8,7 @@ import { WorkOnSection } from './sections/WorkOnSection';
 
 import './home.scss';
 import { BenefitsSection } from './sections/BenefitsSection';
+import { FooterSection } from './sections/FooterSection';
 
 const Home: React.FC = () => {
 	const { t } = useTranslation();
@@ -35,6 +36,10 @@ const Home: React.FC = () => {
 			<WorkOnSection t={t} />
 
 			<BenefitsSection t={t} />
+
+			<hr />
+
+			<FooterSection t={t} />
 		</>
 	);
 };

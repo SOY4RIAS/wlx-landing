@@ -167,3 +167,29 @@
 		grid-template-columns: repeat(6, 1fr);
 	}
 }
+
+hr {
+	border-radius: 10px;
+	border-color: rgba($primary-color, $alpha: 0.1);
+	box-shadow: $secondary-shadow-box;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+footer {
+	position: relative;
+	min-height: 22rem;
+
+	background-image: $bg-footer;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+
+	> div > button {
+		margin-top: 1.5rem;
+	}
+}

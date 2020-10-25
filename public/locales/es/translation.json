@@ -22,7 +22,6 @@
         "ideas": "ideas",
         "products": "productos."
     },
-
     "benefits": {
         "title":"Entre los beneficios que ofrecemos se encuentran",
         "hourRate": "Flexibilidad Horaria",
@@ -32,11 +31,12 @@
         "remoteWeek": "Semana Remota",
         "latestTechnologies": "Trabajar en ultimas tecnologías"
     },
-   
-    "greetings": {
-        "part1": "Gracias por completar el ejercicio",
-        "part2": "te invitamos a ver mas información"
+    "farewell": {
+        "thanks": "Gracias por",
+        "complete": "completar el ejercicio",
+        "invite": "te invitamos a ver mas información",
+        "moreContent": "Conocer más"
     },
     "in": "en",
-    "moreContent": "Conocer más"
+    "companyLogoTxt": "Logo de Wolox"
 }
