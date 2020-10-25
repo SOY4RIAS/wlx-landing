@@ -1,0 +1,20 @@
+@import './../../styles/shared.scss';
+
+main {
+	@include container;
+	@include form;
+
+	padding-top: $main-padding-top - 3rem;
+	padding-bottom: $main-padding-top - 6rem;
+
+	display: flex;
+	justify-content: center;
+
+	#sign-up-form {
+		flex: 0.5;
+
+		@media all and (max-width: 1024px) {
+			flex: 1;
+		}
+	}
+}

@@ -40,5 +40,10 @@
     },
     "in": "en",
     "companyLogoTxt": "Logo de Wolox",
-    "siteInProgress": "Esta pagina está en contrucción"
+    "siteInProgress": "Esta pagina está en contrucción",
+    "register": "Registro",
+    "messages": {
+        "requiredField": "Campo Requerido",
+        "maxCharacters": "Máximo Caracteres"
+    }
 }

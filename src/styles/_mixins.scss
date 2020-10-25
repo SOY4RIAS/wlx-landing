@@ -1,0 +1,77 @@
+@mixin container {
+	padding-left: 5rem;
+	padding-right: 5rem;
+
+	@media all and (max-width: 767px) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
+
+@mixin input {
+	$padding-size: 1rem;
+
+	input,
+	select {
+		transition: all 0.3s ease;
+		font-size: 10pt;
+		font-family: sans-serif, Arial;
+		padding-left: 1rem;
+		margin-top: 0.2rem;
+		height: 1.3rem;
+
+		color: $text-color;
+		background-color: $bg-white-lilac;
+		border: none;
+		border-radius: 10px;
+		border-width: 1px;
+		outline: none;
+
+		&:focus {
+			box-shadow: $secondary-shadow-box;
+		}
+	}
+
+	input[type='checkbox'] {
+		padding: 0;
+		margin: 0;
+		&:focus {
+			box-shadow: unset;
+		}
+	}
+
+	select {
+		height: $padding-size * 2;
+	}
+
+	input {
+		padding: $padding-size;
+	}
+}
+
+@mixin form {
+	form {
+		display: flex;
+		flex-direction: column;
+
+		label {
+			transition: all 0.3s ease-in;
+			font-weight: normal;
+			font-size: 12pt;
+			margin-top: 1rem;
+			display: flex;
+			flex-direction: column;
+			@include input;
+
+			&.inline {
+				flex-direction: row;
+				align-items: center;
+				justify-content: flex-start;
+			}
+
+			small {
+				color: rgb(255, 64, 30);
+			}
+		}
+	}
+}
