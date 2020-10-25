@@ -10,15 +10,16 @@ export const AVAILABLE_LANGS_TEXT = {
 
 export const COLOMBIA_CODE = 'co';
 export const ARGENTINA_CODE = 'ar';
+export const MEXICO_CODE = 'mx';
+export const CHILE_CODE = 'cl';
+export const PERU_CODE = 'pe';
+
 export const COUNTRIES = [
-	{
-		id: COLOMBIA_CODE,
-		name: 'Colombia',
-	},
-	{
-		id: ARGENTINA_CODE,
-		name: 'Argentina',
-	},
+	{ id: COLOMBIA_CODE, name: 'Colombia' },
+	{ id: ARGENTINA_CODE, name: 'Argentina' },
+	{ id: MEXICO_CODE, name: 'México' },
+	{ id: CHILE_CODE, name: 'Chile' },
+	{ id: PERU_CODE, name: 'Perú' },
 ];
 
 export const PROVINCES = {
@@ -35,5 +36,26 @@ export const PROVINCES = {
 		{ id: 'saf', name: 'Santa Fe' },
 		{ id: 'men', name: 'Mendoza' },
 		{ id: 'cha', name: 'Chaco' },
+	],
+	[MEXICO_CODE]: [
+		{ id: 'lac', name: 'Las Californias' },
+		{ id: 'mex', name: 'México' },
+		{ id: 'nmx', name: 'Nuevo México' },
+		{ id: 'tex', name: 'Texas' },
+		{ id: 'nuv', name: 'Nueva Vizcaya' },
+	],
+	[CHILE_CODE]: [
+		{ id: 'pet', name: 'Petorca' },
+		{ id: 'loa', name: 'Los Andes' },
+		{ id: 'fea', name: 'San Felipe de Aconcagua' },
+		{ id: 'qui', name: 'Quillota' },
+		{ id: 'val', name: 'Valparaíso' },
+	],
+	[PERU_CODE]: [
+		{ id: 'anc', name: 'Ancash' },
+		{ id: 'apu', name: 'Apurímac' },
+		{ id: 'are', name: 'Arequipa' },
+		{ id: 'aya', name: 'Ayacucho' },
+		{ id: 'cus', name: 'Cusco' },
 	],
 };

@@ -2,6 +2,7 @@
 
 main {
 	@include container;
+	padding-top: $main-padding-top - 3rem;
 
 	text-align: center;
 

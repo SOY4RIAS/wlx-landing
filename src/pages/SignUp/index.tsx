@@ -10,7 +10,7 @@ const SignUp: React.FC = () => {
 
 	return (
 		<>
-			<main>
+			<main id="sign-up-main">
 				<section id="sign-up-form">
 					<h2 className="text-center"> {t('register')} </h2>
 					<SignUpFormSection t={t} />
