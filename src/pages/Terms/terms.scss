@@ -1,0 +1,19 @@
+main {
+	padding-left: 5rem;
+	padding-right: 5rem;
+	padding-top: 7rem;
+	text-align: center;
+
+	h1 {
+		margin-bottom: 2rem;
+	}
+	p {
+		text-align: justify;
+		margin-bottom: 1rem;
+	}
+
+	@media all and (max-width: 767px) {
+		padding-left: 2rem;
+		padding-right: 2rem;
+	}
+}
