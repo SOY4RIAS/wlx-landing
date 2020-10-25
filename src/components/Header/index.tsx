@@ -1,32 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { HashLink } from 'react-router-hash-link';
 import { Routes } from '../../routers/Router/routes';
+
+import { headerScrolled } from '../../store/header/header.actions';
+
+import { RootState } from '../../store/store';
 
 import { Button } from '../Button';
 
 import styles from './header.module.scss';
 
 export const Header: React.FC = () => {
+	const history = useHistory();
 	const { t } = useTranslation();
 
-	const history = useHistory();
+	const dispatch = useDispatch();
 
-	const [isScrolled, setScrolled] = useState(false);
-
-	const handleScroll = () => {
-		const offset = window.scrollY;
-
-		if (offset > 20) {
-			setScrolled(true);
-			return;
-		}
-
-		setScrolled(false);
-	};
+	const setScrolled = useCallback((value: boolean) => dispatch(headerScrolled(value)), [dispatch]);
+	const isScrolled = useSelector<RootState>((state) => state.header.isHeaderScrolled);
 
 	useEffect(() => {
+		const handleScroll = () => {
+			const offset = window.scrollY;
+
+			if (offset > 20 && !isScrolled) {
+				setScrolled(true);
+				return;
+			} else if (offset < 20 && isScrolled) {
+				setScrolled(false);
+			}
+		};
+
 		window.addEventListener('scroll', handleScroll);
 
 		return () => {
