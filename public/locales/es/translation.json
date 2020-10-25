@@ -17,9 +17,10 @@
         "name": "Woloxers"
     },
     "heroMessage": {
-        "workOn": "Trabajamos para",
-        "convert": "convertir",
+        "workTo": "Trabajamos para",
+        "turn": "convertir",
         "ideas": "ideas",
+        "into": "en",
         "products": "productos."
     },
     "benefits": {

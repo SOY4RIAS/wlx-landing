@@ -1,16 +1,42 @@
 {
     "home": "Home",
-    "benefits": "Benefits",
+    "benefitsLbl": "Benefits",
+    "login": "Login",
     "welcome" : {
-        "part1": "Bienvenido a tu",
-        "part2": "Entrevista Técnica",
-        "part3": "en Wolox"
+        "part1": "Welcome to your",
+        "part2": "Technical interview",
+        "at": "at",
+        "company": "Wolox"
     },
-    "weWorkOn": "Trabajamos para convertir ideas en productos",
-    "benefitsTitle": "Entre los beneficios que ofrecemos se encuentran",
-    "greetings": {
-        "part1": "Gracias por completar el ejercicio",
-        "part2": "te invitamos a ver mas información"
+    "social": {
+        "account": "@Wolox",
+        "followUs": "Follow Us"
     },
-    "moreContent": "Conocer más"
+    "collaborators": {
+        "qty": "350",
+        "name": "Woloxers"
+    },
+    "heroMessage": {
+        "workTo": "We work to",
+        "turn": "turn",
+        "ideas": "ideas",
+        "into": "into",
+        "products": "products."
+    },
+    "benefits": {
+        "title":"Among the benefits we offer are",
+        "hourRate": "Flexible schedule",
+        "homeOffice": "Home Office",
+        "workshops": "Trainings and Workshops",
+        "snacks": "Free snacks, fruits and drinks",
+        "remoteWeek": "Remote Week",
+        "latestTechnologies": "Work on latest technologies"
+    },
+    "farewell": {
+        "thanks": "Thank you for",
+        "complete": "completing the exercise",
+        "invite": "We invite you to see more information",
+        "moreContent": "More Content"
+    },
+    "companyLogoTxt": "Logo de Wolox"
 }

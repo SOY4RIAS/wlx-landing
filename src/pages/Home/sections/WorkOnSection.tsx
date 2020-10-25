@@ -33,11 +33,11 @@ export const WorkOnSection: React.FC<WorkOnSectionProps> = ({ t }) => {
 			}
 			rightContent={
 				<div className="hero-message">
-					<h1>{t('heroMessage.workOn')}&nbsp;</h1>
+					<h1>{t('heroMessage.workTo')}&nbsp;</h1>
 					<h1>
-						<span className="primary-color">{t('heroMessage.convert')}&nbsp;</span>
+						<span className="primary-color">{t('heroMessage.turn')}&nbsp;</span>
 						<span className="accent-color">{t('heroMessage.ideas')}&nbsp;</span>
-						{t('in')}
+						{t('heroMessage.into')}
 					</h1>
 
 					<h1>{t('heroMessage.products')}</h1>
