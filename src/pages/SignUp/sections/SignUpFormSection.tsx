@@ -1,9 +1,12 @@
-import { TFunction } from 'i18next';
 import React from 'react';
+import { TFunction } from 'i18next';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Routes } from '../../../routers/Router/routes';
-import { COLOMBIA_CODE, COUNTRIES, PROVINCES } from '../../../utils/constants';
+import { changeProvince } from '../../../store/form/form.actions';
+import { RootState } from '../../../store/store';
+import { COUNTRIES, Province, PROVINCES } from '../../../utils/constants';
 
 interface SignUpFormSectionProps {
 	t: TFunction;
@@ -16,8 +19,14 @@ const maxLength30 = {
 
 const required = 'Required';
 
-export const SignUpFormSection: React.FC<SignUpFormSectionProps> = ({ t }) => {
-	const { register, errors, watch, handleSubmit } = useForm({ mode: 'onSubmit' });
+export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
+	const { register, errors, watch, handleSubmit } = useForm();
+	const dispatch = useDispatch();
+	const currentProvince = useSelector<RootState, string>((state) => state.form.currentProvince);
+
+	const handleChangeProvince = () => {
+		dispatch(changeProvince(watch('country')));
+	};
 
 	const onSubmit = handleSubmit((data) => console.log(data));
 
@@ -49,7 +58,7 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = ({ t }) => {
 
 			<label>
 				País
-				<select name="country" ref={register({ required })}>
+				<select name="country" ref={register({ required })} onChange={handleChangeProvince}>
 					<option value=""></option>
 
 					{COUNTRIES.map((item) => (
@@ -65,7 +74,7 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = ({ t }) => {
 				Provincia
 				<select name="province" ref={register({ required })}>
 					<option value=""></option>
-					{PROVINCES[COLOMBIA_CODE].map((item) => (
+					{PROVINCES[currentProvince]?.map((item: Province) => (
 						<option key={item.id} value={item.id}>
 							{item.name}
 						</option>

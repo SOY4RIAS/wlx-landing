@@ -14,6 +14,8 @@ export const MEXICO_CODE = 'mx';
 export const CHILE_CODE = 'cl';
 export const PERU_CODE = 'pe';
 
+type COUNTRIES = typeof COLOMBIA_CODE | typeof ARGENTINA_CODE;
+
 export const COUNTRIES = [
 	{ id: COLOMBIA_CODE, name: 'Colombia' },
 	{ id: ARGENTINA_CODE, name: 'Argentina' },
@@ -22,7 +24,12 @@ export const COUNTRIES = [
 	{ id: PERU_CODE, name: 'Perú' },
 ];
 
-export const PROVINCES = {
+export interface Province {
+	id: string;
+	name: string;
+}
+
+export const PROVINCES: any = {
 	[COLOMBIA_CODE]: [
 		{ id: 'bol', name: 'Bolívar' },
 		{ id: 'boy', name: 'Boyacá' },

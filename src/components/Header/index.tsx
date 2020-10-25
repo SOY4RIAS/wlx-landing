@@ -25,12 +25,15 @@ export const Header: React.FC = () => {
 	useEffect(() => {
 		const handleScroll = () => {
 			const offset = window.scrollY;
+			const savedValue = Boolean(localStorage.getItem('header'));
 
-			if (offset > 20 && !isScrolled) {
+			if (offset > 20 && !savedValue) {
 				setScrolled(true);
+				localStorage.header = 1;
 				return;
-			} else if (offset < 20 && isScrolled) {
+			} else if (offset < 20 && savedValue) {
 				setScrolled(false);
+				localStorage.removeItem('header');
 			}
 		};
 
