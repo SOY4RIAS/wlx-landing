@@ -6,13 +6,11 @@ type ButtonType = 'outline' | 'solid' | 'borderless';
 
 interface ButtonProps {
 	type?: ButtonType;
-	onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	mode?: 'button' | 'submit' | 'reset';
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, onClick, type = 'outline' }) => {
-	return (
-		<button className={`${styles.btn} ${styles[type]}`} onClick={onClick}>
-			{children}
-		</button>
-	);
+export const Button: React.FC<ButtonProps & React.HTMLProps<HTMLButtonElement>> = (props) => {
+	const { type = 'outline', mode = 'button', ...genericProps } = props;
+
+	return <button className={`${styles.btn} ${styles[type]}`} {...genericProps} type={mode} />;
 };

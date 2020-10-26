@@ -8,6 +8,10 @@ import { changeProvince } from '../../../store/form/form.actions';
 import { RootState } from '../../../store/store';
 import { COUNTRIES, Province, PROVINCES } from '../../../utils/constants';
 
+import { Button } from '../../../components/Button';
+
+import { User } from '../../../api/types';
+
 interface SignUpFormSectionProps {
 	t: TFunction;
 }
@@ -19,8 +23,12 @@ const maxLength30 = {
 
 const required = 'Required';
 
+interface FormFields extends User {
+	confirmPassword: string;
+}
+
 export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
-	const { register, errors, watch, handleSubmit } = useForm();
+	const { register, errors, watch, handleSubmit } = useForm<FormFields>();
 	const dispatch = useDispatch();
 	const currentProvince = useSelector<RootState, string>((state) => state.form.currentProvince);
 
@@ -30,130 +38,142 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 
 	const onSubmit = handleSubmit((data) => console.log(data));
 
+	const formHasError = () => Object.keys(errors).length > 0;
+
 	return (
-		<form onSubmit={onSubmit}>
-			<label>
-				Nombre
-				<input
-					name="name"
-					ref={register({
-						required,
-						maxLength: maxLength30,
-					})}
-				/>
-				<small>{errors.name && errors.name.message}</small>
-			</label>
+		<>
+			<form onSubmit={onSubmit}>
+				<label>
+					Nombre
+					<input
+						name="name"
+						ref={register({
+							required,
+							maxLength: maxLength30,
+						})}
+					/>
+					<small>{errors.name?.message}</small>
+				</label>
 
-			<label>
-				Apellido
-				<input
-					name="lastname"
-					ref={register({
-						required,
-						maxLength: maxLength30,
-					})}
-				/>
-				<small>{errors.lastname && errors.lastname.message}</small>
-			</label>
+				<label>
+					Apellido
+					<input
+						name="last_name"
+						ref={register({
+							required,
+							maxLength: maxLength30,
+						})}
+					/>
+					<small>{errors.last_name?.message}</small>
+				</label>
 
-			<label>
-				País
-				<select name="country" ref={register({ required })} onChange={handleChangeProvince}>
-					<option value=""></option>
+				<label>
+					País
+					<select name="country" ref={register({ required })} onChange={handleChangeProvince}>
+						<option value=""></option>
 
-					{COUNTRIES.map((item) => (
-						<option key={item.id} value={item.id}>
-							{item.name}
-						</option>
-					))}
-				</select>
-				<small>{errors.country && errors.country.message}</small>
-			</label>
+						{COUNTRIES.map((item) => (
+							<option key={item.id} value={item.id}>
+								{item.name}
+							</option>
+						))}
+					</select>
+					<small>{errors.country?.message}</small>
+				</label>
 
-			<label>
-				Provincia
-				<select name="province" ref={register({ required })}>
-					<option value=""></option>
-					{PROVINCES[currentProvince]?.map((item: Province) => (
-						<option key={item.id} value={item.id}>
-							{item.name}
-						</option>
-					))}
-				</select>
-				<small>{errors.province && errors.province.message}</small>
-			</label>
+				<label>
+					Provincia
+					<select name="province" ref={register({ required })}>
+						<option value=""></option>
+						{PROVINCES[currentProvince]?.map((item: Province) => (
+							<option key={item.id} value={item.id}>
+								{item.name}
+							</option>
+						))}
+					</select>
+					<small>{errors.province?.message}</small>
+				</label>
 
-			<label>
-				Email
-				<input
-					name="email"
-					ref={register({
-						required,
-						pattern: {
-							value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-							message: 'Invalid Email',
-						},
-					})}
-				/>
-				<small>{errors.email && errors.email.message}</small>
-			</label>
+				<label>
+					Email
+					<input
+						name="mail"
+						ref={register({
+							required,
+							pattern: {
+								value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+								message: 'Invalid Email',
+							},
+						})}
+					/>
+					<small>{errors.mail?.message}</small>
+				</label>
 
-			<label>
-				Telefono
-				<input
-					name="phone"
-					type="number"
-					ref={register({
-						required,
-						maxLength: {
-							value: 10,
-							message: 'Only 10 characters',
-						},
-						pattern: {
-							value: /^[0-9]*$/,
-							message: 'Only numbers',
-						},
-					})}
-				/>
-				<small>{errors.phone && errors.phone.message}</small>
-			</label>
+				<label>
+					Telefono
+					<input
+						name="phone"
+						type="number"
+						ref={register({
+							required,
+							maxLength: {
+								value: 10,
+								message: 'Only 10 characters',
+							},
+							pattern: {
+								value: /^[0-9]*$/,
+								message: 'Only numbers',
+							},
+						})}
+					/>
+					<small>{errors.phone?.message}</small>
+				</label>
 
-			<label>
-				Contraseña
-				<input
-					type="password"
-					name="password"
-					ref={register({
-						required,
-						minLength: {
-							value: 6,
-							message: 'Min 6 characters',
-						},
-					})}
-				/>
-				<small>{errors.password && errors.password.message}</small>
-			</label>
+				<label>
+					Contraseña
+					<input
+						type="password"
+						name="password"
+						ref={register({
+							required,
+							pattern: {
+								value: /^[a-zA-Z0-9]+$/,
+								message: 'password must have alphanumeric combination',
+							},
+							minLength: {
+								value: 6,
+								message: 'Min 6 characters',
+							},
+						})}
+					/>
+					<small>{errors.password?.message}</small>
+				</label>
 
-			<label>
-				Confirmar Contraseña
-				<input
-					type="password"
-					name="confirmPassword"
-					ref={register({
-						required,
-						validate: (value) => value === watch('password') || 'Passwords dont match',
-					})}
-				/>
-				<small>{errors.confirmPassword && errors.confirmPassword.message}</small>
-			</label>
+				<label>
+					Confirmar Contraseña
+					<input
+						type="password"
+						name="confirmPassword"
+						ref={register({
+							required,
+							validate: (value) => value === watch('password') || 'Passwords dont match',
+						})}
+					/>
+					<small>{errors.confirmPassword?.message}</small>
+				</label>
 
-			<label className={'inline'}>
-				<input type="checkbox" name="terms" ref={register({ required })} />
-				&nbsp;Acepto&nbsp;
-				<Link to={Routes.terms}>Términos y condiciones</Link>
-			</label>
+				<label className={'inline'}>
+					<input type="checkbox" name="terms" ref={register({ required })} />
+					&nbsp;Acepto&nbsp;
+					<Link to={Routes.terms}>Términos y condiciones</Link>
+				</label>
 
-			<input type="submit" />
-		</form>
+				<br />
+
+				<Button type="solid" mode="submit" disabled={formHasError()}>
+					Guardar
+				</Button>
+			</form>
+		</>
 	);
 };

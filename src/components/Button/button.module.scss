@@ -64,4 +64,10 @@ $text-color-calculated: set-button-text-color($primary-color-darken);
 			background-color: transparent;
 		}
 	}
+
+	&:disabled {
+		cursor: not-allowed;
+		background-color: darken($bg-white-lilac + grey, 10%);
+		color: $text-color;
+	}
 }

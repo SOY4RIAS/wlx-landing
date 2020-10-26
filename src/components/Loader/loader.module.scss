@@ -1,0 +1,29 @@
+@import '../../styles/shared.scss';
+
+.loader {
+	margin: 10px;
+	display: flex;
+	height: 2rem;
+	justify-content: center;
+	align-items: center;
+}
+.spinner {
+	height: 2rem;
+	width: 2rem;
+	border: 1px solid darken($bg-white-lilac, 5%);
+	border-top-color: $primary-color;
+	border-radius: 100%;
+	animation: rotation 1s infinite cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s;
+	opacity: 0;
+}
+
+@keyframes rotation {
+	from {
+		opacity: 1;
+		transform: rotate(0deg);
+	}
+	to {
+		opacity: 1;
+		transform: rotate(359deg);
+	}
+}
