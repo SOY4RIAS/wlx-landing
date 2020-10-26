@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Routes } from '../../../routers/Router/routes';
-import { changeProvince } from '../../../store/form/form.actions';
+import { changeProvince, saveFormThunk } from '../../../store/form/form.actions';
 import { RootState } from '../../../store/store';
 import { COUNTRIES, Province, PROVINCES } from '../../../utils/constants';
 
@@ -24,7 +24,7 @@ const maxLength30 = {
 const required = 'Required';
 
 interface FormFields extends User {
-	confirmPassword: string;
+	confirmPassword?: string;
 }
 
 export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
@@ -36,7 +36,13 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 		dispatch(changeProvince(watch('country')));
 	};
 
-	const onSubmit = handleSubmit((data) => console.log(data));
+	const onSubmit = handleSubmit((data) => {
+		delete data.confirmPassword;
+
+		const user = { ...data };
+
+		dispatch(saveFormThunk(user));
+	});
 
 	const formHasError = () => Object.keys(errors).length > 0;
 

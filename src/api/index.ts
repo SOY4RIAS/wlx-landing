@@ -1,2 +1,2 @@
-export * as AuthService from './Auth';
-export * as TechService from './Tech';
+export { LoginRequest, SignUpRequest } from './Auth';
+export { GetList as TechListRequest } from './Tech';
