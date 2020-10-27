@@ -1,7 +1,8 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { PageLayout } from '../../components/PageLayout';
+import { authenticate } from '../../store/auth/auth.actions';
 import { RootState } from '../../store/store';
 import { Routes } from './routes';
 
@@ -12,7 +13,16 @@ const Terms = React.lazy(() => import('./../../pages/Terms'));
 const AppRouter = React.lazy(() => import('./../AppRouter'));
 
 export const Router = () => {
+	const dispatch = useDispatch();
 	const isAuthenticated = useSelector<RootState>((state) => state.auth.isAuthenticated);
+
+	useEffect(() => {
+		const token = localStorage.getItem('token');
+
+		if (token) {
+			dispatch(authenticate(true));
+		}
+	}, []);
 
 	return (
 		<BrowserRouter>
