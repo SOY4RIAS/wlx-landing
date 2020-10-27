@@ -12,10 +12,6 @@ import { Button } from '../../../components/Button';
 
 import { User } from '../../../api/types';
 
-interface SignUpFormSectionProps {
-	t: TFunction;
-}
-
 const maxLength30 = {
 	value: 30,
 	message: 'only 30 characters',
@@ -23,18 +19,21 @@ const maxLength30 = {
 
 const required = 'Required';
 
+interface SignUpFormSectionProps {
+	t: TFunction;
+}
+
 interface FormFields extends User {
 	confirmPassword?: string;
 }
 
 export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 	const { register, errors, watch, handleSubmit } = useForm<FormFields>();
+
 	const dispatch = useDispatch();
 	const currentProvince = useSelector<RootState, string>((state) => state.form.currentProvince);
 
-	const handleChangeProvince = () => {
-		dispatch(changeProvince(watch('country')));
-	};
+	const handleChangeProvince = () => dispatch(changeProvince(watch('country')));
 
 	const onSubmit = handleSubmit((data) => {
 		delete data.confirmPassword;
@@ -42,6 +41,7 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 		const user = { ...data };
 
 		dispatch(saveFormThunk(user));
+		window.scrollTo(0, 0);
 	});
 
 	const formHasError = () => Object.keys(errors).length > 0;
@@ -173,8 +173,6 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 					&nbsp;Acepto&nbsp;
 					<Link to={Routes.terms}>Términos y condiciones</Link>
 				</label>
-
-				<br />
 
 				<Button type="solid" mode="submit" disabled={formHasError()}>
 					Guardar

@@ -29,6 +29,7 @@ function formReducer(state: formState = initialState, action: formActions): form
 				isFormSaving: false,
 				isFormResultError: true,
 				isFormResultSuccess: false,
+				error: action.error,
 			};
 
 		case formTypes.SAVE_FORM_SUCCESS:
@@ -40,6 +41,8 @@ function formReducer(state: formState = initialState, action: formActions): form
 			};
 
 		case formTypes.HIDE_FORM_STATUS:
+			delete state.error;
+
 			return {
 				...state,
 				isFormSaving: false,

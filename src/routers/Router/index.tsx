@@ -22,7 +22,7 @@ export const Router = () => {
 		if (token) {
 			dispatch(authenticate(true));
 		}
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<BrowserRouter>

@@ -3,6 +3,7 @@ export interface formState {
 	isFormSaving: boolean;
 	isFormResultSuccess: boolean;
 	isFormResultError: boolean;
+	error?: string;
 	token?: string;
 }
 

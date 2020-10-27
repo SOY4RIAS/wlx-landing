@@ -16,5 +16,9 @@
 		@media all and (max-width: 1024px) {
 			flex: 1;
 		}
+
+		[type='submit'] {
+			margin-top: 10px;
+		}
 	}
 }
