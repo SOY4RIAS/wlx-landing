@@ -8,6 +8,11 @@
 	}
 }
 
+@mixin page-vertical-sizes($main-size) {
+	padding-top: $main-size - 3rem;
+	padding-bottom: $main-size - 6rem;
+}
+
 @mixin input {
 	$padding-size: 1rem;
 
@@ -74,4 +79,10 @@
 			}
 		}
 	}
+}
+
+@mixin table-row($align-items) {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	align-items: $align-items;
 }

@@ -1,8 +1,8 @@
 @import './../../styles/shared.scss';
 
-main {
+#terms-main {
 	@include container;
-	padding-top: $main-padding-top - 3rem;
+	@include page-vertical-sizes($main-padding-top);
 
 	text-align: center;
 

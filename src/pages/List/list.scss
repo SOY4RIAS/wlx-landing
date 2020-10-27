@@ -1,0 +1,6 @@
+@import './../../styles/shared.scss';
+
+#list-main {
+	@include container;
+	@include page-vertical-sizes($main-padding-top);
+}

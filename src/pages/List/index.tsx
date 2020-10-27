@@ -1,7 +1,13 @@
 import React from 'react';
 
+import './list.scss';
+
 const List: React.FC = () => {
-	return <h1>hello from List</h1>;
+	return (
+		<main id="list-main">
+			<h1>Listado</h1>
+		</main>
+	);
 };
 
 export default List;

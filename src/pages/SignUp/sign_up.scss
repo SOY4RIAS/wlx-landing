@@ -3,9 +3,7 @@
 #sign-up-main {
 	@include container;
 	@include form;
-
-	padding-top: $main-padding-top - 3rem;
-	padding-bottom: $main-padding-top - 6rem;
+	@include page-vertical-sizes($main-padding-top);
 
 	display: flex;
 	justify-content: center;

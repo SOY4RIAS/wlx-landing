@@ -16,19 +16,17 @@ const SignUp: React.FC = () => {
 	const { isFormSaving, error } = useSelector<RootState, formState>((state) => state.form);
 
 	return (
-		<>
-			<main id="sign-up-main">
-				<section id="sign-up-form">
-					<h2 className="text-center"> {t('register')} </h2>
+		<main id="sign-up-main">
+			<section id="sign-up-form">
+				<h2 className="text-center"> {t('register')} </h2>
 
-					{isFormSaving && <Loader />}
+				{isFormSaving && <Loader />}
 
-					{error && <Alert variant="danger" message={error} />}
+				{error && <Alert variant="danger" message={error} />}
 
-					<SignUpFormSection t={t} />
-				</section>
-			</main>
-		</>
+				<SignUpFormSection t={t} />
+			</section>
+		</main>
 	);
 };
 
