@@ -22,6 +22,7 @@ const SignUp: React.FC = () => {
 					<h2 className="text-center"> {t('register')} </h2>
 
 					{isFormSaving && <Loader />}
+
 					{error && <Alert variant="danger" message={error} />}
 
 					<SignUpFormSection t={t} />

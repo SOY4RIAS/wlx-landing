@@ -3,14 +3,15 @@ import { TFunction } from 'i18next';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Routes } from '../../../routers/Router/routes';
-import { changeProvince, saveFormThunk } from '../../../store/form/form.actions';
+
 import { RootState } from '../../../store/store';
+import { changeProvince, saveFormThunk } from '../../../store/form/form.actions';
 import { COUNTRIES, Province, PROVINCES } from '../../../utils/constants';
 
 import { Button } from '../../../components/Button';
 
 import { User } from '../../../api/types';
+import { Routes } from '../../../routers/Router/routes';
 
 const maxLength30 = {
 	value: 30,
@@ -28,23 +29,28 @@ interface FormFields extends User {
 }
 
 export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
-	const { register, errors, watch, handleSubmit } = useForm<FormFields>();
+	const { register, errors, watch, handleSubmit, formState } = useForm<FormFields>({
+		mode: 'all',
+	});
 
 	const dispatch = useDispatch();
 	const currentProvince = useSelector<RootState, string>((state) => state.form.currentProvince);
 
 	const handleChangeProvince = () => dispatch(changeProvince(watch('country')));
 
-	const onSubmit = handleSubmit((data) => {
+	const onSubmit = handleSubmit((data, e) => {
 		delete data.confirmPassword;
 
 		const user = { ...data };
 
-		dispatch(saveFormThunk(user));
-		window.scrollTo(0, 0);
-	});
+		window.scrollTo(0, 0); //Scroll to top for showing the loading section
 
-	const formHasError = () => Object.keys(errors).length > 0;
+		dispatch(
+			saveFormThunk(user, () => {
+				e?.target.reset();
+			})
+		);
+	});
 
 	return (
 		<>
@@ -174,7 +180,7 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 					<Link to={Routes.terms}>Términos y condiciones</Link>
 				</label>
 
-				<Button type="solid" mode="submit" disabled={formHasError()}>
+				<Button type="solid" mode="submit" disabled={!formState.isValid}>
 					Guardar
 				</Button>
 			</form>

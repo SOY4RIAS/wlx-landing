@@ -29,7 +29,13 @@ export const Router = () => {
 			<PageLayout>
 				<Switch>
 					<Route path={Routes.root} exact component={Home} />
-					<Route path={Routes.signUp} exact component={SignUp} />
+
+					<Route
+						path={Routes.signUp}
+						exact
+						render={() => (!isAuthenticated ? <SignUp /> : <Redirect to={Routes.app} />)}
+					/>
+
 					<Route path={Routes.terms} exact component={Terms} />
 
 					{isAuthenticated && <Route path={Routes.app} component={AppRouter} />}

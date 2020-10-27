@@ -35,7 +35,8 @@ export function saveFormError(error: string): formActions {
 }
 
 export function saveFormThunk(
-	user: User
+	user: User,
+	onSuccessCallback?: () => void
 ): ThunkAction<Promise<void>, RootState, unknown, formActions> {
 	return async function (dispatch: ThunkDispatch<{}, {}, formActions | authActions>) {
 		dispatch(saveFormRequest());
@@ -54,6 +55,8 @@ export function saveFormThunk(
 			// Save on localstorage the user and the token (result of the request)
 			localStorage.setItem('user', JSON.stringify(user));
 			localStorage.setItem('token', token);
+
+			if (onSuccessCallback) onSuccessCallback();
 
 			return;
 		}
