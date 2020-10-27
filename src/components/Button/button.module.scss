@@ -24,6 +24,7 @@ $text-color-calculated: set-button-text-color($primary-color-darken);
 	@media screen and (max-width: 300px) {
 		padding-left: 1rem;
 		padding-right: 1rem;
+		margin: 0;
 	}
 
 	&:hover {

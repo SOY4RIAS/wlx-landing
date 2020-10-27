@@ -54,7 +54,7 @@
 		}
 
 		li {
-			margin: 0 15px;
+			margin: 0 0.7rem;
 		}
 	}
 
@@ -62,7 +62,11 @@
 		padding: 20px 50px;
 		flex-direction: column;
 
-		nav {
+		nav > ul {
+			li {
+				margin: 0 7px;
+			}
+
 			margin: 0;
 		}
 	}
@@ -71,7 +75,7 @@
 		padding: 20px 20px;
 		flex-direction: column;
 
-		nav {
+		nav > ul {
 			padding: 10px;
 			margin-right: 0;
 		}

@@ -36,7 +36,13 @@ const Home: React.FC = () => {
 							</h2>
 							<h2 className="accent-color bold">{t('welcome.company')}</h2>
 							<Button type="borderless" onClick={handleChangeLang}>
-								{AVAILABLE_LANGS_TEXT[i18n.language === SPANISH_CODE ? ENGLISH_CODE : SPANISH_CODE]}
+								{
+									AVAILABLE_LANGS_TEXT[
+										i18n.language.toLocaleLowerCase().startsWith(SPANISH_CODE)
+											? ENGLISH_CODE
+											: SPANISH_CODE
+									]
+								}
 							</Button>
 						</div>
 					}

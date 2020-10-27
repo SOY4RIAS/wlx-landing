@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { HashLink } from 'react-router-hash-link';
+import { AppRoutes } from '../../routers/AppRouter/routes';
 import { Routes } from '../../routers/Router/routes';
 
 import { headerScrolled } from '../../store/header/header.actions';
@@ -21,6 +22,10 @@ export const Header: React.FC = () => {
 
 	const setScrolled = useCallback((value: boolean) => dispatch(headerScrolled(value)), [dispatch]);
 	const isScrolled = useSelector<RootState>((state) => state.header.isHeaderScrolled);
+
+	const isAuthenticated = useSelector<RootState>((state) => state.auth.isAuthenticated);
+
+	const handleAuthClick = () => history.push(isAuthenticated ? AppRoutes.TechList : Routes.signUp);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -60,7 +65,7 @@ export const Header: React.FC = () => {
 						</HashLink>
 					</li>
 					<li>
-						<Button onClick={() => history.push(Routes.signUp)}>{t('login')}</Button>
+						<Button onClick={handleAuthClick}>{t(isAuthenticated ? 'login' : 'register')}</Button>
 					</li>
 				</ul>
 			</nav>
