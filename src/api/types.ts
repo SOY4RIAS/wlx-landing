@@ -20,12 +20,14 @@ export interface AuthResponse {
 
 export type TechsResponse = Tech[];
 
+export type TechType = 'Back-End' | 'Front-End' | 'Mobile';
+
 export interface Tech {
 	tech: string;
 	year: string;
 	author: string;
 	license: string;
 	language: string;
-	type: string;
+	type: TechType;
 	logo: string;
 }

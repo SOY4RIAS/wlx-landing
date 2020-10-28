@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { RootState } from '../../../store/store';
 import { changeProvince, saveFormThunk } from '../../../store/form/form.actions';
-import { COUNTRIES, Province, PROVINCES } from '../../../utils/constants';
+import { COUNTRIES, BasicRecord, PROVINCES } from '../../../utils/constants';
 
 import { Button } from '../../../components/Button';
 
@@ -20,12 +20,12 @@ const maxLength30 = {
 
 const required = 'Required';
 
-interface SignUpFormSectionProps {
-	t: TFunction;
-}
-
 interface FormFields extends User {
 	confirmPassword?: string;
+}
+
+interface SignUpFormSectionProps {
+	t: TFunction;
 }
 
 export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
@@ -45,11 +45,7 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 
 		window.scrollTo(0, 0); //Scroll to top for showing the loading section
 
-		dispatch(
-			saveFormThunk(user, () => {
-				e?.target.reset();
-			})
-		);
+		dispatch(saveFormThunk(user, () => e?.target.reset()));
 	});
 
 	return (
@@ -97,7 +93,7 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 					Provincia
 					<select name="province" ref={register({ required })}>
 						<option value=""></option>
-						{PROVINCES[currentProvince]?.map((item: Province) => (
+						{PROVINCES[currentProvince]?.map((item: BasicRecord) => (
 							<option key={item.id} value={item.id}>
 								{item.name}
 							</option>

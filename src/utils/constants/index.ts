@@ -1,3 +1,5 @@
+export const API_URL = process.env.REACT_APP_API;
+
 export const WOLOX_TWITTER_URL = 'https://twitter.com/wolox';
 export const WOLOX_PAGE = 'https://wolox.com.ar';
 
@@ -8,15 +10,20 @@ export const AVAILABLE_LANGS_TEXT = {
 	[ENGLISH_CODE]: 'English',
 };
 
-export const COLOMBIA_CODE = 'co';
-export const ARGENTINA_CODE = 'ar';
-export const MEXICO_CODE = 'mx';
-export const CHILE_CODE = 'cl';
-export const PERU_CODE = 'pe';
+/// Countries data structure
 
-type COUNTRIES = typeof COLOMBIA_CODE | typeof ARGENTINA_CODE;
+export interface BasicRecord {
+	id: string;
+	name: string;
+}
 
-export const COUNTRIES = [
+export const COLOMBIA_CODE: string = 'co';
+export const ARGENTINA_CODE: string = 'ar';
+export const MEXICO_CODE: string = 'mx';
+export const CHILE_CODE: string = 'cl';
+export const PERU_CODE: string = 'pe';
+
+export const COUNTRIES: BasicRecord[] = [
 	{ id: COLOMBIA_CODE, name: 'Colombia' },
 	{ id: ARGENTINA_CODE, name: 'Argentina' },
 	{ id: MEXICO_CODE, name: 'México' },
@@ -24,12 +31,13 @@ export const COUNTRIES = [
 	{ id: PERU_CODE, name: 'Perú' },
 ];
 
-export interface Province {
-	id: string;
-	name: string;
+/// Provinces data structure
+
+interface Provinces {
+	[key: string]: BasicRecord[];
 }
 
-export const PROVINCES: any = {
+export const PROVINCES: Provinces = {
 	[COLOMBIA_CODE]: [
 		{ id: 'bol', name: 'Bolívar' },
 		{ id: 'boy', name: 'Boyacá' },
@@ -66,5 +74,3 @@ export const PROVINCES: any = {
 		{ id: 'cus', name: 'Cusco' },
 	],
 };
-
-export const API_URL = process.env.REACT_APP_API;

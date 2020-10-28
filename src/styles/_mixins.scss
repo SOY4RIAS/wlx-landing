@@ -13,11 +13,12 @@
 	padding-bottom: $main-size - 6rem;
 }
 
-@mixin input {
+@mixin input($margin: 0) {
 	$padding-size: 1rem;
 
 	input,
 	select {
+		margin: $margin;
 		transition: all 0.3s ease;
 		font-size: 10pt;
 		font-family: sans-serif, Arial;
@@ -81,8 +82,8 @@
 	}
 }
 
-@mixin table-row($align-items) {
+@mixin table-row($align-items: center, $columns: 10) {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	grid-template-columns: repeat($columns, 1fr);
 	align-items: $align-items;
 }

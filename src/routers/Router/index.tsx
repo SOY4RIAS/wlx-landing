@@ -37,8 +37,7 @@ export const Router = () => {
 					/>
 
 					<Route path={Routes.terms} exact component={Terms} />
-
-					{isAuthenticated && <Route path={Routes.app} component={AppRouter} />}
+					<Route path={Routes.app} component={AppRouter} />
 
 					<Redirect to={Routes.root} />
 				</Switch>
