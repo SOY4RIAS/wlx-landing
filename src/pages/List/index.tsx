@@ -1,43 +1,23 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Tech } from '../../api/types';
-import { Loader } from '../../components/Loader';
 import { RootState } from '../../store/store';
+import { Loader } from '../../components/Loader';
 import { techListThunk } from '../../store/tech/tech.actions';
+import { isLoadingSelector, orderAndFilterTechs } from '../../store/tech/tech.selectors';
 
 import './list.scss';
-import { FilterSection } from './sections/FilterSection';
 
-interface ListSelector {
-	techAmount: number;
-	isLoading: boolean;
-}
+import { FilterSection } from './sections/FilterSection';
 
 const List: React.FC = () => {
 	const dispatch = useDispatch();
 
-	const visibleTechs = useSelector<RootState, Tech[]>(({ tech }) =>
-		tech.techs.filter((item) => {
-			if (tech.nameFilter && tech.typeFilter) {
-				return item.tech.startsWith(tech.nameFilter) && item.type === tech.typeFilter;
-			}
+	const filterTechs = useMemo(() => orderAndFilterTechs, []);
 
-			if (tech.nameFilter) {
-				return item.tech.startsWith(tech.nameFilter);
-			}
+	const visibleTechs = useSelector<RootState, Tech[]>(filterTechs, () => false);
 
-			if (tech.typeFilter) {
-				return item.type === tech.typeFilter;
-			}
-
-			return true;
-		})
-	);
-
-	const { isLoading, techAmount } = useSelector<RootState, ListSelector>(({ tech }) => ({
-		isLoading: tech.isLoading,
-		techAmount: tech.techs.length,
-	}));
+	const isLoading = useSelector<RootState, boolean>(isLoadingSelector);
 
 	useEffect(() => {
 		dispatch(techListThunk());
@@ -81,7 +61,7 @@ const List: React.FC = () => {
 				<div className="row head">
 					<div>
 						<h6 className="text-center">
-							Quantity: <small>{techAmount}</small>
+							Quantity: <small>{visibleTechs.length}</small>
 						</h6>
 					</div>
 				</div>

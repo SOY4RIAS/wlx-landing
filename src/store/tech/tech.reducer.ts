@@ -22,6 +22,13 @@ function techReducer(state: TechState = initialState, action: TechActions): Tech
 				isLoading: false,
 			};
 
+		case TechTypes.TECH_LIST_REQUEST_FAILURE:
+			return {
+				...state,
+				isLoading: false,
+				error: action.payload,
+			};
+
 		case TechTypes.FILTER_TECH_BY_NAME:
 			return {
 				...state,
@@ -34,11 +41,10 @@ function techReducer(state: TechState = initialState, action: TechActions): Tech
 				typeFilter: action.payload,
 			};
 
-		case TechTypes.TECH_LIST_REQUEST_FAILURE:
+		case TechTypes.ORDER_TECH_BY_NAME:
 			return {
 				...state,
-				isLoading: false,
-				error: action.payload,
+				orderBy: action.orderType,
 			};
 
 		default:

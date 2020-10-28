@@ -9,6 +9,7 @@ export interface TechState {
 
 	nameFilter?: string;
 	typeFilter?: TechType;
+	orderBy?: OrderType;
 }
 
 export enum TechTypes {
@@ -31,7 +32,7 @@ export type TechActions =
 	| { type: TechTypes.RESET_TECH_FILTER }
 	| { type: TechTypes.FILTER_TECH_BY_NAME; payload?: string }
 	| { type: TechTypes.FILTER_TECH_BY_TYPE; payload?: TechType }
-	| { type: TechTypes.ORDER_TECH_BY_NAME; orderType: OrderType };
+	| { type: TechTypes.ORDER_TECH_BY_NAME; orderType?: OrderType };
 
 export type OrderType = 'asc' | 'desc';
 

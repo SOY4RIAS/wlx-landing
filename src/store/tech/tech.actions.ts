@@ -24,10 +24,10 @@ export function techListRequestFailure(error: string): TechActions {
 	};
 }
 
-export function orderTechByName(order: OrderType): TechActions {
+export function orderTechByName(order?: string): TechActions {
 	return {
 		type: TechTypes.ORDER_TECH_BY_NAME,
-		orderType: order,
+		orderType: order as OrderType,
 	};
 }
 
