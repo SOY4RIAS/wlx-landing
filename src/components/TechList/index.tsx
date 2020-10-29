@@ -5,21 +5,21 @@ import { TechRow } from './TechRow';
 import styles from './tech_list.module.scss';
 
 interface TechListProps {
-	loading: boolean;
-	loadingComponent: React.ReactNode;
+	loading?: boolean;
+	loadingComponent?: React.ReactNode;
 	items?: Tech[];
-	setToChecked?: Set<string>;
-	onCheckedItem?: (tech: string, checked: boolean) => void;
+	setToChecked: Set<string>;
+	onCheckedItem: (tech: string, checked: boolean) => void;
 }
 
 const RowHeadCls = `${styles.row} ${styles.head}`;
 
 export const TechList: React.FC<TechListProps> = ({
 	loading,
-	loadingComponent,
+	loadingComponent = null,
 	items = [],
-	setToChecked = new Set(),
-	onCheckedItem = () => null,
+	setToChecked,
+	onCheckedItem,
 }) => {
 	const handleChange = useCallback(
 		({ target: { checked, dataset } }: React.ChangeEvent<HTMLInputElement>) => {
