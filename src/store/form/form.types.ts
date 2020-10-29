@@ -1,4 +1,4 @@
-export interface formState {
+export interface FormState {
 	currentProvince: string;
 	isFormSaving: boolean;
 	isFormResultSuccess: boolean;
@@ -7,7 +7,7 @@ export interface formState {
 	token?: string;
 }
 
-export enum formTypes {
+export enum FormTypes {
 	CHANGE_PROVINCE = 'CHANGE_PROVINCE',
 	SAVE_FORM_REQUEST = 'SAVE_FORM_REQUEST',
 	SAVE_FORM_SUCCESS = 'SAVE_FORM_SUCCESS',
@@ -15,9 +15,9 @@ export enum formTypes {
 	HIDE_FORM_STATUS = 'HIDE_FORM_STATUS',
 }
 
-export type formActions =
-	| { type: formTypes.CHANGE_PROVINCE; payload: string }
-	| { type: formTypes.SAVE_FORM_REQUEST }
-	| { type: formTypes.SAVE_FORM_FAILURE; error: string }
-	| { type: formTypes.SAVE_FORM_SUCCESS; token: string }
-	| { type: formTypes.HIDE_FORM_STATUS };
+export type FormActions =
+	| { type: FormTypes.CHANGE_PROVINCE; payload: string }
+	| { type: FormTypes.SAVE_FORM_REQUEST }
+	| { type: FormTypes.SAVE_FORM_FAILURE; error: string }
+	| { type: FormTypes.SAVE_FORM_SUCCESS; token: string }
+	| { type: FormTypes.HIDE_FORM_STATUS };

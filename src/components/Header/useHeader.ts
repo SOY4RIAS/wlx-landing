@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { AppRoutes } from '../../routers/AppRouter/routes';
 import { Routes } from '../../routers/Router/routes';
+import { logoutThunk } from '../../store/auth/auth.actions';
 import { headerScrolled } from '../../store/header/header.actions';
 import { RootState } from '../../store/store';
 import { countOfLikes } from '../../store/tech/tech.selectors';
@@ -24,6 +25,7 @@ export const useHeader = () => {
 	const numberOfLikes = useSelector<RootState, number>(sizeOfLikesSelector);
 
 	const setScrolled = useCallback((value: boolean) => dispatch(headerScrolled(value)), [dispatch]);
+	const handleLogout = useCallback(() => dispatch(logoutThunk()), [dispatch]);
 
 	const handleAuthClick = () => history.push(isAuthenticated ? AppRoutes.TechList : Routes.signUp);
 
@@ -47,7 +49,7 @@ export const useHeader = () => {
 		return () => {
 			window.removeEventListener('scroll', () => handleScroll);
 		};
-	});
+	}, [setScrolled]);
 
-	return { isScrolled, isAuthenticated, handleAuthClick, numberOfLikes };
+	return { isScrolled, isAuthenticated, numberOfLikes, handleAuthClick, handleLogout };
 };

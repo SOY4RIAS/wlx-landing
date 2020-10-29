@@ -3,33 +3,33 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { RootState } from '../store';
 import { User } from '../../api/types';
 import { SignUpRequest } from '../../api';
-import { formActions, formTypes } from './form.types';
+import { FormActions, FormTypes } from './form.types';
 import { authenticate } from '../auth/auth.actions';
-import { authActions } from '../auth/auth.types';
+import { AuthActions } from '../auth/auth.types';
 
-export function changeProvince(province: string): formActions {
+export function changeProvince(province: string): FormActions {
 	return {
-		type: formTypes.CHANGE_PROVINCE,
+		type: FormTypes.CHANGE_PROVINCE,
 		payload: province,
 	};
 }
 
-export function saveFormRequest(): formActions {
+export function saveFormRequest(): FormActions {
 	return {
-		type: formTypes.SAVE_FORM_REQUEST,
+		type: FormTypes.SAVE_FORM_REQUEST,
 	};
 }
 
-export function saveFormSuccess(token: string): formActions {
+export function saveFormSuccess(token: string): FormActions {
 	return {
-		type: formTypes.SAVE_FORM_SUCCESS,
+		type: FormTypes.SAVE_FORM_SUCCESS,
 		token,
 	};
 }
 
-export function saveFormError(error: string): formActions {
+export function saveFormError(error: string): FormActions {
 	return {
-		type: formTypes.SAVE_FORM_FAILURE,
+		type: FormTypes.SAVE_FORM_FAILURE,
 		error,
 	};
 }
@@ -37,8 +37,8 @@ export function saveFormError(error: string): formActions {
 export function saveFormThunk(
 	user: User,
 	onSuccessCallback?: () => void
-): ThunkAction<Promise<void>, RootState, unknown, formActions> {
-	return async function (dispatch: ThunkDispatch<{}, {}, formActions | authActions>) {
+): ThunkAction<Promise<void>, RootState, unknown, FormActions> {
+	return async function (dispatch: ThunkDispatch<{}, {}, FormActions | AuthActions>) {
 		dispatch(saveFormRequest());
 
 		const { token, error } = await SignUpRequest(user);

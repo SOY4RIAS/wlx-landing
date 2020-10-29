@@ -1,9 +1,9 @@
-export interface headerState {
+export interface HeaderState {
 	isHeaderScrolled: boolean;
 }
 
-export enum headerTypes {
+export enum HeaderTypes {
 	HEADER_SCROLLED = 'HEADER_SCROLLED',
 }
 
-export type headerActions = { type: headerTypes.HEADER_SCROLLED; payload: boolean };
+export type HeaderActions = { type: HeaderTypes.HEADER_SCROLLED; payload: boolean };

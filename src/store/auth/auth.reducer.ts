@@ -1,15 +1,21 @@
-import { authActions, authState, authTypes } from './auth.types';
+import { AuthActions, AuthState, AuthTypes } from './auth.types';
 
-const initialState: authState = {
+const initialState: AuthState = {
 	isAuthenticated: false,
 };
 
-function authReducer(state: authState = initialState, action: authActions): authState {
+function authReducer(state: AuthState = initialState, action: AuthActions): AuthState {
 	switch (action.type) {
-		case authTypes.AUTHENTICATED:
+		case AuthTypes.AUTHENTICATED:
 			return {
 				...state,
 				isAuthenticated: action.payload,
+			};
+
+		case AuthTypes.LOGOUT:
+			return {
+				...state,
+				isAuthenticated: false,
 			};
 
 		default:

@@ -173,7 +173,9 @@ export const SignUpFormSection: React.FC<SignUpFormSectionProps> = () => {
 				<label className={'inline'}>
 					<input type="checkbox" name="terms" ref={register({ required })} />
 					&nbsp;Acepto&nbsp;
-					<Link to={Routes.terms}>Términos y condiciones</Link>
+					<Link target="_blank" to={Routes.terms}>
+						Términos y condiciones
+					</Link>
 				</label>
 
 				<Button type="solid" mode="submit" disabled={!formState.isValid}>

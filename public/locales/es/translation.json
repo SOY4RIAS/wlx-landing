@@ -3,6 +3,8 @@
     "benefitsLbl": "Beneficios",
     "login": "Login",
     "signUp": "Registrarse",
+    "logout": "Salir",
+
     "welcome" : {
         "part1": "Bienvenido a tu",
         "part2": "Entrevista Técnica",

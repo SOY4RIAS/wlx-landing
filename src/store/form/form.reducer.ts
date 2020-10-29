@@ -1,21 +1,21 @@
-import { formActions, formState, formTypes } from './form.types';
+import { FormActions, FormState, FormTypes } from './form.types';
 
-const initialState: formState = {
+const initialState: FormState = {
 	currentProvince: '',
 	isFormSaving: false,
 	isFormResultError: false,
 	isFormResultSuccess: false,
 };
 
-function formReducer(state: formState = initialState, action: formActions): formState {
+function formReducer(state: FormState = initialState, action: FormActions): FormState {
 	switch (action.type) {
-		case formTypes.CHANGE_PROVINCE:
+		case FormTypes.CHANGE_PROVINCE:
 			return {
 				...state,
 				currentProvince: action.payload,
 			};
 
-		case formTypes.SAVE_FORM_REQUEST:
+		case FormTypes.SAVE_FORM_REQUEST:
 			return {
 				...state,
 				isFormSaving: true,
@@ -23,7 +23,7 @@ function formReducer(state: formState = initialState, action: formActions): form
 				isFormResultSuccess: false,
 			};
 
-		case formTypes.SAVE_FORM_FAILURE:
+		case FormTypes.SAVE_FORM_FAILURE:
 			return {
 				...state,
 				isFormSaving: false,
@@ -32,7 +32,7 @@ function formReducer(state: formState = initialState, action: formActions): form
 				error: action.error,
 			};
 
-		case formTypes.SAVE_FORM_SUCCESS:
+		case FormTypes.SAVE_FORM_SUCCESS:
 			return {
 				...state,
 				isFormSaving: false,
@@ -40,7 +40,7 @@ function formReducer(state: formState = initialState, action: formActions): form
 				isFormResultSuccess: true,
 			};
 
-		case formTypes.HIDE_FORM_STATUS:
+		case FormTypes.HIDE_FORM_STATUS:
 			delete state.error;
 
 			return {

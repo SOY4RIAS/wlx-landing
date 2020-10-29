@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
 	const { t } = useTranslation();
 	const location = useLocation();
 
-	const { isScrolled, isAuthenticated, handleAuthClick, numberOfLikes } = useHeader();
+	const { isScrolled, isAuthenticated, numberOfLikes, handleAuthClick, handleLogout } = useHeader();
 
 	return (
 		<header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
@@ -32,10 +32,18 @@ export const Header: React.FC = () => {
 						</HashLink>
 					</li>
 
-					{location.pathname === AppRoutes.TechList && numberOfLikes > 0 && (
-						<li>
-							<span>Likes: {numberOfLikes}</span>
-						</li>
+					{location.pathname === AppRoutes.TechList && (
+						<>
+							{numberOfLikes > 0 && (
+								<li>
+									<span>Likes {numberOfLikes}</span>
+								</li>
+							)}
+
+							<li>
+								<Button onClick={handleLogout}>{t('logout')}</Button>
+							</li>
+						</>
 					)}
 
 					{location.pathname !== AppRoutes.TechList && (

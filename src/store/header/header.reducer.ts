@@ -1,12 +1,12 @@
-import { headerActions, headerState, headerTypes } from './header.types';
+import { HeaderActions, HeaderState, HeaderTypes } from './header.types';
 
-const initialState: headerState = {
+const initialState: HeaderState = {
 	isHeaderScrolled: false,
 };
 
-function headerReducer(state: headerState = initialState, action: headerActions) {
+function headerReducer(state: HeaderState = initialState, action: HeaderActions) {
 	switch (action.type) {
-		case headerTypes.HEADER_SCROLLED:
+		case HeaderTypes.HEADER_SCROLLED:
 			return {
 				...state,
 				isHeaderScrolled: action.payload,

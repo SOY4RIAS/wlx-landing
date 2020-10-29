@@ -2,6 +2,7 @@
     "home": "Home",
     "benefitsLbl": "Benefits",
     "login": "Login",
+    "logout": "Logout",
     "signUp": "Sign Up",
     "welcome" : {
         "part1": "Welcome to your",
