@@ -10,7 +10,7 @@ interface TechRowProps {
 
 export const TechRow: React.FC<TechRowProps> = ({ className, item, onChange, checked }) => {
 	return (
-		<div className={className}>
+		<div className={className} role="row">
 			<div>
 				<input type="checkbox" data-tech={item.tech} onChange={onChange} checked={checked} />
 			</div>
