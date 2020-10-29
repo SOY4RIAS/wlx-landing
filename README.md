@@ -1,11 +1,10 @@
 # WOLOX LANDING CHALLENGE
 
-## Prueba Tecnica de wolox basado en este diseño
-
+## Technical Test of Wolox Based  on this design
 
 ----------
 
-### Tecnologías usadas
+### Technologies Used
 
 - React
 - Redux
