@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
 	const { t } = useTranslation();
 	const location = useLocation();
 
-	const { isScrolled, isAuthenticated, handleAuthClick } = useHeader();
+	const { isScrolled, isAuthenticated, handleAuthClick, numberOfLikes } = useHeader();
 
 	return (
 		<header className={`${styles.header} ${isScrolled ? styles.scrolled : ''}`}>
@@ -31,6 +31,12 @@ export const Header: React.FC = () => {
 							{t('benefitsLbl')}
 						</HashLink>
 					</li>
+
+					{location.pathname === AppRoutes.TechList && numberOfLikes > 0 && (
+						<li>
+							<span>Likes: {numberOfLikes}</span>
+						</li>
+					)}
 
 					{location.pathname !== AppRoutes.TechList && (
 						<li>

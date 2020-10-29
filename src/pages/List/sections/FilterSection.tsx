@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dispatch } from 'redux';
-import { filterByName, filterByType, orderTechByName } from '../../../store/tech/tech.actions';
+import {
+	filterByName,
+	filterByType,
+	orderTechByName,
+	resetFilter,
+} from '../../../store/tech/tech.actions';
 interface FilterSectionProps {
 	dispatch: Dispatch;
 }
@@ -17,6 +22,13 @@ export const FilterSection: React.FC<FilterSectionProps> = ({ dispatch }) => {
 	const onChangeOrder = (order: string) => {
 		dispatch(orderTechByName(order.length > 0 ? order : undefined));
 	};
+
+	useEffect(
+		() => () => {
+			dispatch(resetFilter());
+		},
+		[dispatch]
+	);
 
 	return (
 		<>

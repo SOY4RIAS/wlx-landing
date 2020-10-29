@@ -1,10 +1,11 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { AppRoutes } from '../../routers/AppRouter/routes';
 import { Routes } from '../../routers/Router/routes';
 import { headerScrolled } from '../../store/header/header.actions';
 import { RootState } from '../../store/store';
+import { countOfLikes } from '../../store/tech/tech.selectors';
 
 /**
  * useHeader hook is created with the only purpose
@@ -15,9 +16,12 @@ export const useHeader = () => {
 
 	const dispatch = useDispatch();
 
+	const sizeOfLikesSelector = useMemo(() => countOfLikes, []);
+
 	// Selectors from the store
 	const isAuthenticated = useSelector<RootState>((state) => state.auth.isAuthenticated);
 	const isScrolled = useSelector<RootState>((state) => state.header.isHeaderScrolled);
+	const numberOfLikes = useSelector<RootState, number>(sizeOfLikesSelector);
 
 	const setScrolled = useCallback((value: boolean) => dispatch(headerScrolled(value)), [dispatch]);
 
@@ -45,5 +49,5 @@ export const useHeader = () => {
 		};
 	});
 
-	return { isScrolled, isAuthenticated, handleAuthClick };
+	return { isScrolled, isAuthenticated, handleAuthClick, numberOfLikes };
 };

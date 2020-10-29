@@ -1,23 +1,38 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Tech } from '../../api/types';
+
 import { RootState } from '../../store/store';
 import { Loader } from '../../components/Loader';
-import { techListThunk } from '../../store/tech/tech.actions';
-import { isLoadingSelector, orderAndFilterTechs } from '../../store/tech/tech.selectors';
+import { saveLikeThunk, techListThunk } from '../../store/tech/tech.actions';
+import {
+	isLoadingSelector,
+	likesOnTechList,
+	orderAndFilterTechs,
+} from '../../store/tech/tech.selectors';
 
 import './list.scss';
 
 import { FilterSection } from './sections/FilterSection';
+import { TechWithLike } from '../../store/tech/tech.types';
 
 const List: React.FC = () => {
 	const dispatch = useDispatch();
 
 	const filterTechs = useMemo(() => orderAndFilterTechs, []);
+	const loadingSelector = useMemo(() => isLoadingSelector, []);
+	const likesSelector = useMemo(() => likesOnTechList, []);
 
-	const visibleTechs = useSelector<RootState, Tech[]>(filterTechs, () => false);
+	const visibleTechs = useSelector<RootState, TechWithLike[]>(filterTechs, () => false);
 
-	const isLoading = useSelector<RootState, boolean>(isLoadingSelector);
+	const isLoading = useSelector<RootState, boolean>(loadingSelector);
+	const likes = useSelector<RootState, Set<string>>(likesSelector);
+
+	const onSaveLike = useCallback(
+		({ target: { checked, dataset } }: React.ChangeEvent<HTMLInputElement>) => {
+			dispatch(saveLikeThunk(dataset.tech as string, checked));
+		},
+		[dispatch]
+	);
 
 	useEffect(() => {
 		dispatch(techListThunk());
@@ -31,6 +46,7 @@ const List: React.FC = () => {
 
 			<section id={'tech-list'}>
 				<div className="row head">
+					<div>You like</div>
 					<div>Tech</div>
 					<div>Year</div>
 					<div>Author</div>
@@ -45,6 +61,14 @@ const List: React.FC = () => {
 				) : (
 					visibleTechs.map((item, index) => (
 						<div key={index} className={'row'}>
+							<div>
+								<input
+									type="checkbox"
+									data-tech={item.tech}
+									onChange={onSaveLike}
+									checked={likes.has(item.tech)}
+								/>
+							</div>
 							<div>{item.tech}</div>
 							<div>{item.year}</div>
 							<div>{item.author}</div>

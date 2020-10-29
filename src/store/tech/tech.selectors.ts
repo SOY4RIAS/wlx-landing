@@ -1,11 +1,16 @@
 import { createSelector } from 'reselect';
 import { RootState } from '../store';
+import { TechWithLike } from './tech.types';
 
-export const techsSelector = (state: RootState) => state.tech.techs;
+export const techsSelector = (state: RootState) => state.tech.techs as TechWithLike[];
 
 export const isLoadingSelector = (state: RootState) => state.tech.isLoading;
 
+export const likesOnTechList = (state: RootState) => state.tech.likedTechs;
+export const countOfLikes = (state: RootState) => state.tech.likedTechs.size;
+
 export const nameFilterSelector = (state: RootState) => state.tech.nameFilter;
+
 export const typeFilterSelector = (state: RootState) => state.tech.typeFilter;
 
 export const orderBySelector = (state: RootState) => state.tech.orderBy;

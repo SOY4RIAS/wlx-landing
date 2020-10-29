@@ -4,6 +4,7 @@ const initialState: TechState = {
 	isLoading: false,
 	techs: [],
 	techsResult: [],
+	likedTechs: new Set(),
 };
 
 function techReducer(state: TechState = initialState, action: TechActions): TechState {
@@ -39,6 +40,22 @@ function techReducer(state: TechState = initialState, action: TechActions): Tech
 			return {
 				...state,
 				typeFilter: action.payload,
+			};
+
+		case TechTypes.RESET_TECH_FILTER:
+			delete state.typeFilter;
+			delete state.nameFilter;
+			delete state.orderBy;
+
+			return {
+				...state,
+			};
+
+		case TechTypes.LOAD_LIKES:
+		case TechTypes.SAVE_LIKE_ON_TECH:
+			return {
+				...state,
+				likedTechs: action.likedTechs,
 			};
 
 		case TechTypes.ORDER_TECH_BY_NAME:

@@ -13,7 +13,7 @@
 	animation-name: fadein;
 	animation-fill-mode: forwards;
 	opacity: 0;
-	color: white;
+
 	overflow-x: hidden;
 
 	transition: all 0.5s ease-in-out;
@@ -38,6 +38,7 @@
 	}
 
 	nav > ul {
+		list-style: none;
 		font-size: $font-size-pivot;
 		font-weight: bold;
 		display: flex;

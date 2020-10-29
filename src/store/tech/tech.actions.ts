@@ -2,7 +2,7 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { GetList } from '../../api/Tech';
 import { Tech, TechType } from '../../api/types';
 import { RootState } from '../store';
-import { OrderType, TechActions, TechTypes } from './tech.types';
+import { LIKED_TECHS_KEY, OrderType, TechActions, TechTypes } from './tech.types';
 
 export function techListRequest(): TechActions {
 	return {
@@ -44,6 +44,44 @@ export function filterByType(type?: string): TechActions {
 	};
 }
 
+export function resetFilter(): TechActions {
+	return {
+		type: TechTypes.RESET_TECH_FILTER,
+	};
+}
+
+export function loadLikes(): TechActions {
+	return {
+		type: TechTypes.LOAD_LIKES,
+		likedTechs: getLikesOnTechList(),
+	};
+}
+
+export function saveLike(likedTechs: Set<string>): TechActions {
+	return {
+		type: TechTypes.SAVE_LIKE_ON_TECH,
+		likedTechs,
+	};
+}
+
+export function saveLikeThunk(
+	tech: string,
+	checked: boolean
+): ThunkAction<Promise<void>, RootState, unknown, TechActions> {
+	return async function (dispatch: ThunkDispatch<{}, {}, TechActions>) {
+		const likes = getLikesOnTechList();
+
+		if (!checked) {
+			likes.delete(tech);
+		} else {
+			likes.add(tech);
+		}
+
+		saveLikesOnStorage(likes);
+		dispatch(saveLike(likes));
+	};
+}
+
 export function techListThunk(): ThunkAction<Promise<void>, RootState, unknown, TechActions> {
 	return async function (dispatch: ThunkDispatch<{}, {}, TechActions>) {
 		dispatch(techListRequest());
@@ -57,4 +95,25 @@ export function techListThunk(): ThunkAction<Promise<void>, RootState, unknown, 
 
 		dispatch(techListRequestSuccess(techs));
 	};
+}
+
+/**
+ * `getLikesOnTechList` is a function that reads the localStorage and returns
+ * a `Set` of likes on Tech List
+ */
+function getLikesOnTechList(): Set<string> {
+	const savedLikedTechs = localStorage.getItem(LIKED_TECHS_KEY);
+
+	const likedTechs = !savedLikedTechs ? [] : (JSON.parse(savedLikedTechs) as string[]);
+
+	return new Set(likedTechs);
+}
+
+/**
+ * `saveLikesOnStorage` is a function that saves on localStorage a
+ * `Set` of likes on Tech List
+ */
+function saveLikesOnStorage(likes: Set<string>) {
+	const savedLikedTechs = JSON.stringify(Array.from(likes));
+	localStorage.setItem(LIKED_TECHS_KEY, savedLikedTechs);
 }
