@@ -14,6 +14,7 @@ export interface TechState {
 	error?: string;
 
 	nameFilter?: string;
+	fieldFilter?: string;
 	typeFilter?: TechType;
 	orderBy?: OrderType;
 
@@ -27,6 +28,7 @@ export enum TechTypes {
 
 	RESET_TECH_FILTER = 'RESET_TECH_FILTER',
 	FILTER_TECH_BY_NAME = 'FILTER_TECH_BY_NAME',
+	FILTER_TECH_BY_FIELD = 'FILTER_TECH_BY_FIELD',
 	FILTER_TECH_BY_TYPE = 'FILTER_TECH_BY_TYPE',
 	ORDER_TECH_BY_NAME = 'ORDER_TECH_BY_NAME',
 
@@ -40,6 +42,7 @@ export type TechActions =
 	| { type: TechTypes.TECH_LIST_REQUEST_FAILURE; payload: string }
 	| { type: TechTypes.RESET_TECH_FILTER }
 	| { type: TechTypes.FILTER_TECH_BY_NAME; payload?: string }
+	| { type: TechTypes.FILTER_TECH_BY_FIELD; field?: string }
 	| { type: TechTypes.FILTER_TECH_BY_TYPE; payload?: TechType }
 	| { type: TechTypes.ORDER_TECH_BY_NAME; orderType?: OrderType }
 	| { type: TechTypes.LOAD_LIKES; likedTechs: Set<string> }

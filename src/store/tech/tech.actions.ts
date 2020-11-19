@@ -37,6 +37,12 @@ export function filterByName(name?: string): TechActions {
 		payload: name,
 	};
 }
+export function filterByField(field?: string): TechActions {
+	return {
+		type: TechTypes.FILTER_TECH_BY_FIELD,
+		field,
+	};
+}
 export function filterByType(type?: string): TechActions {
 	return {
 		type: TechTypes.FILTER_TECH_BY_TYPE,

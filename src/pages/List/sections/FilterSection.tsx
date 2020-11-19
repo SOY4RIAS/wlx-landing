@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import {
+	filterByField,
 	filterByName,
 	filterByType,
 	orderTechByName,
 	resetFilter,
 } from '../../../store/tech/tech.actions';
+
+import { TECH_FILTERS } from './../../../utils/constants';
+
 interface FilterSectionProps {
 	dispatch: Dispatch;
 }
@@ -13,6 +17,10 @@ interface FilterSectionProps {
 export const FilterSection: React.FC<FilterSectionProps> = ({ dispatch }) => {
 	const onChangeName = (name: string) => {
 		dispatch(filterByName(name.length > 0 ? name : undefined));
+	};
+
+	const onChangeField = (field: string) => {
+		dispatch(filterByField(field.length > 0 ? field : undefined));
 	};
 
 	const onChangeType = (type: string) => {
@@ -37,6 +45,15 @@ export const FilterSection: React.FC<FilterSectionProps> = ({ dispatch }) => {
 
 				<div>
 					<input placeholder="Tech name" onChange={(e) => onChangeName(e.target.value)} />
+
+					<select onChange={(e) => onChangeField(e.target.value)}>
+						<option value="">Any Field</option>
+						{TECH_FILTERS.map((field) => (
+							<option value={field} key={field}>
+								{field}
+							</option>
+						))}
+					</select>
 
 					<select onChange={(e) => onChangeType(e.target.value)}>
 						<option value="">Every Type</option>

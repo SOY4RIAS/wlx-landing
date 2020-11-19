@@ -10,21 +10,24 @@ export const likesOnTechList = (state: RootState) => state.tech.likedTechs;
 export const countOfLikes = (state: RootState) => state.tech.likedTechs.size;
 
 export const nameFilterSelector = (state: RootState) => state.tech.nameFilter;
+export const fieldNameFilterSelector = (state: RootState) => state.tech.fieldFilter;
 
 export const typeFilterSelector = (state: RootState) => state.tech.typeFilter;
 
 export const orderBySelector = (state: RootState) => state.tech.orderBy;
 
 export const filteredTechs = createSelector(
-	[techsSelector, nameFilterSelector, typeFilterSelector],
-	(techs, nameFilter, typeFilter) => {
-		return techs.filter((item) => {
+	[techsSelector, nameFilterSelector, typeFilterSelector, fieldNameFilterSelector],
+	(techs, nameFilter, typeFilter, fieldFilter) => {
+		return techs.filter((item: any) => {
+			const searchField = !fieldFilter ? 'tech' : fieldFilter;
+
 			if (nameFilter && typeFilter) {
-				return item.tech.startsWith(nameFilter) && item.type === typeFilter;
+				return item[searchField].startsWith(nameFilter) && item.type === typeFilter;
 			}
 
 			if (nameFilter) {
-				return item.tech.startsWith(nameFilter);
+				return item[searchField].startsWith(nameFilter);
 			}
 
 			if (typeFilter) {

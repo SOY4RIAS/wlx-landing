@@ -41,6 +41,11 @@ function techReducer(state: TechState = initialState, action: TechActions): Tech
 				...state,
 				typeFilter: action.payload,
 			};
+		case TechTypes.FILTER_TECH_BY_FIELD:
+			return {
+				...state,
+				fieldFilter: action.field,
+			};
 
 		case TechTypes.RESET_TECH_FILTER:
 			delete state.typeFilter;

@@ -74,3 +74,5 @@ export const PROVINCES: Provinces = {
 		{ id: 'cus', name: 'Cusco' },
 	],
 };
+
+export const TECH_FILTERS = ['tech', 'year', 'author', 'license', 'language'];
